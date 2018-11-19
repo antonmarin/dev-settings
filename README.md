@@ -7,4 +7,4 @@ Storage of my dev settings
 
 ## Jetbrains IDEs spelling https://www.jetbrains.com/help/idea/spelling.html
 
-    curl -sSo ~/idea-spelling.dic https://raw.githubusercontent.com/antonmarin/dev-settings/master/idea-spelling.dic
+    curl -sSo ~/Documents/idea-spelling.dic https://raw.githubusercontent.com/antonmarin/dev-settings/master/idea-spelling.dic

@@ -51,3 +51,6 @@ indent_style = tab
 
 [package.json]
 indent_size = 2
+
+[Gopkg.toml]
+indent_size = 2

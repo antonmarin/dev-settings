@@ -30,13 +30,12 @@ indent_size = 2
 indent_size = 4
 
 [*.md]
-trim_trailing_whitespace = false
+indent_size = unset
 
 [*.sh]
 indent_style = tab
 
 [*.{yaml,yml}]
-indent_style = space
 indent_size = 2
 trim_trailing_whitespace = false
 
@@ -52,5 +51,5 @@ indent_style = tab
 [package.json]
 indent_size = 2
 
-[Gopkg.toml]
+[Gopkg.*]
 indent_size = 2

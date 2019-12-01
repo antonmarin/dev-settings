@@ -12,3 +12,7 @@ Storage of my dev settings
 ## PHP CS config
 
     curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/.php_cs
+
+## GitHint bot
+
+    curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/.githint.json

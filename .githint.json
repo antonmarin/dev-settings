@@ -1,0 +1,10 @@
+{
+  "options": {
+    "detectPull": "branch.name != 'master'",
+    "skip": "branch.name == 'master'"
+  },
+  "checks": {
+    "A PR cannot touch more than 10 files": "pull.changed_files < 11",
+    "A PR cannot touch more than 150 lines": "pull.additions + pull.deletions < 151"
+  }
+}

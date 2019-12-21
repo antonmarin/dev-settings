@@ -1,0 +1,8 @@
+---
+version: '2'
+
+tasks:
+  lint:
+    desc: "Quick tests not required to build app"
+    cmds:
+      - docker run --rm -v $PWD:/app dockerizedphp/phpmnd /app

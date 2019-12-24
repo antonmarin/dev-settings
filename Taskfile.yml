@@ -22,3 +22,7 @@ tasks:
       - docker run --rm -v $PWD:/app dockerizedphp/phpmnd /app
         --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks
         --non-zero-exit-on-violation
+  lint-phpstan:
+    desc: "Validate phpstan"
+    cmds:
+      - docker run --rm -v $PWD:/app phpstan/phpstan analyse /app

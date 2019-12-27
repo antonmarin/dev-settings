@@ -1,5 +1,7 @@
 parameters:
+    level: 6
     excludes_analyse:
         - tests/_support/_generated/
         - var/
         - vendor/
+    inferPrivatePropertyTypeFromConstructor: true

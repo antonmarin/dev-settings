@@ -27,12 +27,9 @@ tasks:
       - docker run --rm -v $PWD:/app dockerizedphp/phpmnd /app
         --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks
         --non-zero-exit-on-violation
-  lint-phpstan:
-    desc: "Validate phpstan"
-    cmds:
-      - docker run --rm -v $PWD:/app phpstan/phpstan analyse /app
-
   test:
-    desc: "Test application. Run locally after deploy"
+    desc: "PHPStan & Test application. Run locally after deploy"
     cmds:
-      - echo "some test cmd"
+      - docker-compose exec php vendor/bin/phpstan analyse /app
+      - docker-compose exec php vendor/bin/codecept run --steps
+

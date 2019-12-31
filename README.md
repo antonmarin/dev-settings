@@ -20,3 +20,7 @@ Storage of my dev settings
 ## GitHint bot
 
     curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/.githint.json
+
+## PHPStan
+
+    curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/phpstan.neon

@@ -27,6 +27,12 @@ tasks:
       - docker run --rm -v $PWD:/app dockerizedphp/phpmnd /app
         --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks
         --non-zero-exit-on-violation
+  lint-dockerfile:
+    desc: "Validate Dockerfile best practices"
+    cmds:
+      - docker run --rm -v $PWD:/app -w /app hadolint/hadolint:latest-debian
+        sh -c "find . -name Dockerfile | xargs -L1 hadolint"
+
   test:
     desc: "PHPStan & Test application. Run locally after deploy"
     cmds:

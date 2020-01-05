@@ -13,25 +13,45 @@ tasks:
       - task: lint-composer
       - task: lint-mnd
       - task: lint-cs
-  lint-cs:
-    desc: "Validate code style"
-    cmds:
-      - docker run --rm -iv $PWD:/data/ cytopia/php-cs-fixer fix --dry-run --diff
   lint-composer:
     desc: "Validate composer configuration"
     cmds:
       - docker run --rm -v $PWD:/app composer:1.9 validate --no-check-publish
+  lint-cs:
+    desc: "Validate code style"
+    cmds:
+      - docker run --rm -iv $PWD:/data/ cytopia/php-cs-fixer fix --dry-run --diff
+  lint-dockerfile:
+    desc: "Validate Dockerfile best practices"
+    cmds:
+      - docker run --rm -v $PWD:/app -w /app hadolint/hadolint:latest-debian
+        sh -c "find . -name Dockerfile | xargs -L1 hadolint"
+  lint-helm:
+    cmds:
+      - docker run --rm -tv "$PWD:$PWD" lachlanevenson/k8s-helm:v2.14.2
+          lint
+          -f "$PWD/{{ .CHART_PATH }}/values.yaml"
+          -f "$PWD/{{ .CHART_PATH }}/values-dev.yaml"
+          "$PWD/{{ .CHART_PATH }}"
+  lint-markdown:
+    cmds:
+      - docker run -i --rm -v $PWD:/work tmknom/markdownlint /work
   lint-mnd:
     desc: "Validate no magic numbers"
     cmds:
       - docker run --rm -v $PWD:/app dockerizedphp/phpmnd /app
         --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks
         --non-zero-exit-on-violation
-  lint-dockerfile:
-    desc: "Validate Dockerfile best practices"
+  lint-shell:
     cmds:
-      - docker run --rm -v $PWD:/app -w /app hadolint/hadolint:latest-debian
-        sh -c "find . -name Dockerfile | xargs -L1 hadolint"
+      - docker run -tv "$PWD:/mnt" koalaman/shellcheck:v0.5.0
+        --color=always --shell=bash --exclude=SC2181
+        build/docker/*/*.sh *.sh
+  lint-yaml:
+    cmds:
+      - docker run --rm -tv ${PWD}:/app sdesbure/yamllint sh -c "yamllint
+        /app/*.yml
+        /app/.*.yml"
 
   test:
     desc: "PHPStan & Test application. Run locally after deploy"

@@ -64,9 +64,9 @@ and docker 5+ G of RAM
 
 ## Deploy
 
-Где находятся наши серверы?
+Где находятся наши серверы и как доставить приложение на них?
 
-We use GCP (Google cloud platform).
+We use GCP (Google cloud platform) and continuous deployment from master branch.
 
 To use first [install `gcloud` cli tool](https://cloud.google.com/sdk/install).
 

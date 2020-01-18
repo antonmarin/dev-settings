@@ -47,6 +47,9 @@ tasks:
       - docker run -tv "$PWD:/mnt" koalaman/shellcheck:v0.5.0
         --color=always --shell=bash --exclude=SC2181
         build/docker/*/*.sh *.sh
+  lint-terraform:
+    cmds:
+      - docker run --rm -v ${PWD}:/data -t wata727/tflint
   lint-yaml:
     cmds:
       - docker run --rm -tv ${PWD}:/app sdesbure/yamllint sh -c "yamllint

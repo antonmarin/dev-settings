@@ -49,7 +49,7 @@ tasks:
         build/docker/*/*.sh *.sh
   lint-terraform:
     cmds:
-      - docker run --rm -v ${PWD}:/data -t wata727/tflint
+      - docker run --rm -v ${PWD}:/data -t wata727/tflint deploy
   lint-yaml:
     cmds:
       - docker run --rm -tv ${PWD}:/app sdesbure/yamllint sh -c "yamllint

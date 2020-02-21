@@ -5,6 +5,10 @@ Storage of my dev settings
 
     curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/Taskfile.yml
 
+## [Makefile](http://www.gnu.org/software/make/manual/)
+
+    curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/Makefile
+
 ## [.editorconfig](https://editorconfig.org/)
 
     curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/.editorconfig

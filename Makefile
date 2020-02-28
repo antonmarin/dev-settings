@@ -13,16 +13,16 @@ help:
 exec:
 	$(CMD_DOCKER_RUN) sh
 
-lint: lint-cs lint-composer
+lint: lint-cs lint-composer lint-mnd
 lint-composer:
 	docker run --rm -iv $(PWD):/app/ composer:1.9 validate
 lint-cs:
-	docker run --rm -iv $(PWD):/data/ cytopia/php-cs-fixer fix --dry-run --diff
+	docker run --rm -iv $(PWD):/data/ cytopia/php-cs-fixer fix --dry-run --diff --allow-risky=yes
 lint-mnd:
 	docker run --rm -v $(PWD):/app dockerizedphp/phpmnd /app \
         --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks \
         --non-zero-exit-on-violation
-        
+
 test: stan codeception
 rebuild:
 	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(DEV_IMAGE_NAME) -f docker/Dockerfile .

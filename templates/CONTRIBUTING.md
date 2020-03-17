@@ -76,6 +76,16 @@ To use first [install `gcloud` cli tool](https://cloud.google.com/sdk/install).
 
 Visit `Dockerfile`s for info about running apps
 
+or
+
+Код: PHP7.1, Symfony 3.4.18, angularJS 1.3.8
+База: PostgreSQL.
+Деплой: Jenkins
+
 ## Monitoring
 
 Куда смотреть что все хорошо во время деплоя своих изменений?
+
+- NewRelic
+- Sentry
+- ELK/Graylog

@@ -8,7 +8,7 @@ Production URL: https://domain.com
 
 Business documentation: https://confluence.domain.com
 
-Specification: https://swagger.domain.com/serviceA.yml
+Specification: https://swagger.domain.com/serviceA.yml, https://confluence.domain.com/EventBus
 
 > Например: оформление заказа; сбор заказа; регистрация пользователя.
 
@@ -34,4 +34,10 @@ Specification: https://swagger.domain.com/serviceA.yml
 - jira.domain.com/BUGS. Не совершенства системы.
 - status.domain.com. Работоспособность узлов
 
+## Стейджинг
 
+Как пользоваться тестовыми серверами
+Troubleshooting:
+
+В случае появления ошибки Symfony Exception "Type error: " на страницах ЛКУ, необходимо выкатить свежий дамп pcs.
+При ошибке TransportException иногда помогает перевыкат https://j.skyeng.tech/job/Vimbox/job/DeployAllVimboxProjectsParallel/

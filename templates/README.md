@@ -37,7 +37,9 @@ Specification: https://swagger.domain.com/serviceA.yml, https://confluence.domai
 ## Стейджинг
 
 Как пользоваться тестовыми серверами
-Troubleshooting:
 
-В случае появления ошибки Symfony Exception "Type error: " на страницах ЛКУ, необходимо выкатить свежий дамп pcs.
-При ошибке TransportException иногда помогает перевыкат https://j.skyeng.tech/job/Vimbox/job/DeployAllVimboxProjectsParallel/
+## Troubleshooting
+
+В случае появления ошибки Symfony Exception "Type error: " на страницах *** , необходимо выкатить свежий дамп .
+
+При ошибке TransportException иногда помогает перевыкат https://jenkins.domain.com/job/

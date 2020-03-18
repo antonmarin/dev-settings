@@ -37,7 +37,7 @@ Specification: https://swagger.domain.com/serviceA.yml, https://confluence.domai
 ## Каналы коммуникации
 
 - #tech. Тех ревью. Помощь в проектировании.
-- jira.domain.com/BUGS. Не совершенства системы.
+- jira.domain.com/BUGS. Несовершенства системы.
 - status.domain.com. Работоспособность узлов
 
 ## Стейджинг

@@ -23,6 +23,12 @@ Specification: https://swagger.domain.com/serviceA.yml, https://confluence.domai
 
 ### Подходы
 
+Примеры:
+- Толстый контроллер + smoke test
+- TDD + nodesign
+- hexagon + split unit,integration tests
+- acceptance tests at https://github.com/...
+
 ## Ответственные
 
 - Тех: Сергей Сергеевич @serg

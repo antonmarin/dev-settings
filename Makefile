@@ -1,6 +1,6 @@
 .DEFAULT_GOAL=help
 PHP_VERSION=7.1
-DEV_IMAGE_NAME="antonmarin/php"
+DEV_IMAGE_NAME="antonmarin/php:$(PHP_VERSION)-alpine-cli"
 CMD_DOCKER_RUN=docker run -itv $(PWD):/app -w /app $(DEV_IMAGE_NAME)
 
 help:

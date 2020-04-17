@@ -22,6 +22,11 @@ lint-mnd:
 	docker run --rm -v $(PWD):/app dockerizedphp/phpmnd /app \
         --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks \
         --non-zero-exit-on-violation
+lint-dockerfile:
+	docker run --rm -tv ${PWD}:/app hadolint/hadolint:v1.8.0 \
+		hadolint \
+		/app/alpine/Dockerfile \
+		/app/debian/Dockerfile
 
 test: stan codeception
 rebuild:

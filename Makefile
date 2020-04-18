@@ -27,7 +27,11 @@ lint-dockerfile:
 		hadolint \
 		/app/alpine/Dockerfile \
 		/app/debian/Dockerfile
-
+lint-shell:
+	docker run -tv "$PWD:/mnt" koalaman/shellcheck:v0.5.0 \
+		--color=always --shell=sh --exclude=SC2181 \
+		build/docker/*/*.sh *.sh
+			
 test: stan codeception
 rebuild:
 	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(DEV_IMAGE_NAME) -f docker/Dockerfile .

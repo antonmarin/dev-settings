@@ -31,6 +31,9 @@ lint-shell:
 	docker run -tv "$PWD:/mnt" koalaman/shellcheck:v0.5.0 \
 		--color=always --shell=sh --exclude=SC2181 \
 		build/docker/*/*.sh *.sh
+lint-yaml:
+	docker run --rm -v "$(PWD):/app" -w /apps sdesbure/yamllint yamllint homeassistant/config/*.y?ml
+
 			
 test: stan codeception
 rebuild:

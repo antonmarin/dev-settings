@@ -9,6 +9,20 @@ help:
 		lint\t prebuild validations \n\
 		test\t test library \n\
 	"
+autohelp: #? help me
+	$(info Available targets)
+	@awk '/^@?[a-zA-Z\-\_0-9]+:/ { \
+		nb = sub( /^#\? /, "", helpMsg ); \
+		if(nb == 0) { \
+			helpMsg = $$0; \
+			nb = sub( /^[^:]*:.* #\? /, "", helpMsg ); \
+		} \
+		if (nb) \
+			printf "\033[1;31m%-" width "s\033[0m %s\n", $$1, helpMsg; \
+	} \
+	{ helpMsg = $$0 }' \
+	$(MAKEFILE_LIST) | column -ts:
+
 
 exec:
 	$(CMD_DOCKER_RUN) sh

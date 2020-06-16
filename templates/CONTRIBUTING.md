@@ -89,3 +89,7 @@ or
 - NewRelic
 - Sentry
 - ELK/Graylog
+
+Как оформлять данные для мониторинга(логи, метрики)?
+
+- We follow https://prometheus.io/docs/practices/naming/

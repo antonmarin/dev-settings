@@ -47,6 +47,8 @@ lint-shell:
 		build/docker/*/*.sh *.sh
 lint-yaml:
 	docker run --rm -v "$(PWD):/app" -w /app sdesbure/yamllint sh -c "yamllint **/*.yml"
+lint-cloud-init:
+	docker run --rm -v "$(PWD):/app" -w /app nonstatic/cloud-init:v1 cloud-init devel schema --config-file /app/cloud-init.cfg
 
 			
 test: stan codeception

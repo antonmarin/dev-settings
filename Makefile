@@ -10,7 +10,7 @@ help:
 		test\t test library \n\
 	"
 autohelp: #? help me
-	$(info Available targets)
+	@printf "\e[34;01mAvailable targets\033[0m\n"
 	@awk '/^@?[a-zA-Z\-\_0-9]+:/ { \
 		nb = sub( /^#\? /, "", helpMsg ); \
 		if(nb == 0) { \

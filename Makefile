@@ -11,7 +11,7 @@ help:
 	"
 autohelp: #? help me
 	@printf "\e[34;01mAvailable targets\033[0m\n"
-	@awk '/^@?[a-zA-Z\-\_0-9]+:/ { \
+	@awk '/^@?[a-zA-Z\-_0-9]+:/ { \
 		nb = sub( /^#\? /, "", helpMsg ); \
 		if(nb == 0) { \
 			helpMsg = $$0; \

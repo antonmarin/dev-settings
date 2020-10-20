@@ -49,8 +49,9 @@ lint-yaml:
 	docker run --rm -v "$(PWD):/app" -w /app sdesbure/yamllint sh -c "yamllint **/*.yml"
 lint-cloud-init:
 	docker run --rm -v "$(PWD):/app" -w /app nonstatic/cloud-init:v1 cloud-init devel schema --config-file /app/cloud-init.cfg
+lint-json:
+	docker run --rm -v "$(PWD):/app" cytopia/jsonlint -t '    ' /app/composer.json
 
-			
 test: stan codeception
 rebuild:
 	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(DEV_IMAGE_NAME) -f docker/Dockerfile .

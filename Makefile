@@ -11,6 +11,8 @@ lint-composer:
 	docker run --rm -iv $(PWD):/app/ composer:1.9 validate
 lint-cs:
 	docker run --rm -iv $(PWD):/data/ cytopia/php-cs-fixer fix --dry-run --diff --allow-risky=yes
+lint-checkstyle:
+	docker run --rm -v $(PWD):/app -v $HOME/checkstyle.xml:/config/checkstyle.xml solucionesgbh/checkstyle checkstyle /config/checkstyle.xml /app
 lint-mnd:
 	docker run --rm -v $(PWD):/app dockerizedphp/phpmnd /app \
         --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks \

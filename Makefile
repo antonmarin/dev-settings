@@ -3,27 +3,6 @@ PHP_VERSION=7.1
 DEV_IMAGE_NAME="antonmarin/php:$(PHP_VERSION)-alpine-cli"
 CMD_DOCKER_RUN=docker run -itv $(PWD):/app -w /app $(DEV_IMAGE_NAME)
 
-help:
-	@printf "\
-		exec\t connect to shell of current dev image \n\
-		lint\t prebuild validations \n\
-		test\t test library \n\
-	"
-autohelp: #? help me
-	@printf "\e[34;01mAvailable targets\033[0m\n"
-	@awk '/^@?[a-zA-Z\-_0-9]+:/ { \
-		nb = sub( /^#\? /, "", helpMsg ); \
-		if(nb == 0) { \
-			helpMsg = $$0; \
-			nb = sub( /^[^:]*:.* #\? /, "", helpMsg ); \
-		} \
-		if (nb) \
-			printf "\033[1;31m%-" width "s\033[0m %s\n", $$1, helpMsg; \
-	} \
-	{ helpMsg = $$0 }' \
-	$(MAKEFILE_LIST) | column -ts:
-
-
 exec:
 	$(CMD_DOCKER_RUN) sh
 
@@ -51,6 +30,9 @@ lint-cloud-init:
 	docker run --rm -v "$(PWD):/app" -w /app nonstatic/cloud-init:v1 cloud-init devel schema --config-file /app/cloud-init.cfg
 lint-json:
 	docker run --rm -v "$(PWD):/app" cytopia/jsonlint -t '    ' /app/composer.json
+lint-git:
+	docker run --rm --ulimit nofile=1024 -v "$(PWD):/repo" -w "/repo" jorisroovers/gitlint --ignore=body-is-missing -c title-match-regex.regex="^[\w\s]*" --commits "origin/master..HEAD"
+	echo "$(shell git rev-parse --abbrev-ref HEAD)" | grep -Eq '\w+' || echo "\033[31mError: git branch pattern failed\033[0m"
 
 test: stan codeception
 rebuild:
@@ -61,3 +43,24 @@ stan:
 	$(CMD_DOCKER_RUN) vendor/bin/phpstan analyse . -vvv
 codeception:
 	$(CMD_DOCKER_RUN) vendor/bin/codecept run
+
+help: #? help me
+	@printf "\e[34;01mAvailable targets\033[0m\n"
+	@awk '/^@?[a-zA-Z\-_0-9]+:/ { \
+		nb = sub( /^#\? /, "", helpMsg ); \
+		if(nb == 0) { \
+			helpMsg = $$0; \
+			nb = sub( /^[^:]*:.* #\? /, "", helpMsg ); \
+		} \
+		if (nb) \
+			printf "\033[1;31m%-" width "s\033[0m %s\n", $$1, helpMsg; \
+	} \
+	{ helpMsg = $$0 }' \
+	$(MAKEFILE_LIST) | column -ts:
+
+manualhelp:
+	@printf "\
+		exec\t connect to shell of current dev image \n\
+		lint\t prebuild validations \n\
+		test\t test library \n\
+	"

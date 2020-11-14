@@ -2,13 +2,13 @@
 
 ## Краткое описание
 
-Описание бизнес-процесса за который отвечает сервис. 
+Описание бизнес-процесса за который отвечает сервис.
 
-Production URL: https://domain.com
+Production URL: <https://domain.com>
 
-Business documentation: https://confluence.domain.com
+Business documentation: <https://confluence.domain.com>
 
-Specification: https://swagger.domain.com/serviceA.yml, https://confluence.domain.com/EventBus
+Specification: <https://swagger.domain.com/serviceA.yml>, <https://confluence.domain.com/EventBus>
 
 > Например: оформление заказа; сбор заказа; регистрация пользователя.
 
@@ -24,10 +24,11 @@ Specification: https://swagger.domain.com/serviceA.yml, https://confluence.domai
 ### Подходы
 
 Примеры:
+
 - Толстый контроллер + smoke test
 - TDD + nodesign
 - hexagon + split unit,integration tests
-- acceptance tests at https://github.com/...
+- acceptance tests at <https://github.com/>...
 
 ## Ответственные
 
@@ -36,7 +37,7 @@ Specification: https://swagger.domain.com/serviceA.yml, https://confluence.domai
 
 ## Каналы коммуникации
 
-- #tech. Тех ревью. Помощь в проектировании.
+- `#tech`. Тех ревью. Помощь в проектировании.
 - jira.domain.com/BUGS. Несовершенства системы.
 - status.domain.com. Работоспособность узлов
 
@@ -46,6 +47,7 @@ Specification: https://swagger.domain.com/serviceA.yml, https://confluence.domai
 
 ## Troubleshooting
 
-В случае появления ошибки Symfony Exception "Type error: " на страницах *** , необходимо выкатить свежий дамп .
+В случае появления ошибки Symfony Exception "Type error: " на страницах ***,
+необходимо выкатить свежий дамп.
 
-При ошибке TransportException иногда помогает перевыкат https://jenkins.domain.com/job/
+При ошибке TransportException иногда помогает перевыкат <https://jenkins.domain.com/job/>

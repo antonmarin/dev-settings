@@ -30,6 +30,9 @@ lint-dockerfile:
         -v /usr/lib/systemd:/usr/lib/systemd \
         -v /etc:/etc --label docker_bench_security \
         docker/docker-bench-security
+lint-doctrine:
+	bin/doctrine orm:validate-schema
+	bin/console doctrine:schema:validate
 lint-dotenv: #? dotenv-linter.github.io'
 	docker run --rm -v $(PWD):/app dotenvlinter/dotenv-linter -r /app/
 lint-git:

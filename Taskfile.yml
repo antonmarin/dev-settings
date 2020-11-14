@@ -20,7 +20,8 @@ tasks:
   lint-cs:
     desc: "Validate code style"
     cmds:
-      - docker run --rm -iv $PWD:/data/ cytopia/php-cs-fixer fix --dry-run --diff
+      - docker run --rm -iv $PWD:/data/ cytopia/php-cs-fixer
+        fix --dry-run --diff
   lint-dockerfile:
     desc: "Validate Dockerfile best practices"
     cmds:
@@ -40,7 +41,8 @@ tasks:
     desc: "Validate no magic numbers"
     cmds:
       - docker run --rm -v $PWD:/app dockerizedphp/phpmnd /app
-        --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks
+        --exclude=var --exclude=vendor
+        --exclude=src/Pcs/Resources/blockslib/blocks
         --non-zero-exit-on-violation
   lint-shell:
     cmds:
@@ -61,4 +63,3 @@ tasks:
     cmds:
       - docker-compose exec php vendor/bin/phpstan analyse /app
       - docker-compose exec php vendor/bin/codecept run --steps
-

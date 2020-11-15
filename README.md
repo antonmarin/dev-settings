@@ -2,7 +2,7 @@
 
 Storage of my dev settings
 
-## [taskfile.org](https://taskfile.org)
+## [taskfile.dev](https://taskfile.dev)
 
 ```sh
 curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/Taskfile.yml

@@ -43,3 +43,9 @@ curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/.githin
 ```sh
 curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/phpstan.neon
 ```
+
+## Github actions
+
+```sh
+curl -sSo .github/workflows/onpush.yml https://raw.githubusercontent.com/antonmarin/dev-settings/master/github/workflows/onpush.yml
+```

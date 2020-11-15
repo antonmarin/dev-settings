@@ -1,40 +1,15 @@
 name: onpush
 on: [push]
 jobs:
-  php-cs-fixer:
-    name: Validate codestyle
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: run php-cs-fixer
-        run: make lint-cs
-  composer-validate:
-    name: Validate composer configuration
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: composer validate
-        run: make lint-composer
-  php-magic-number-detector:
-    name: Validate no magic numbers
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: run phpmnd
-        run: make lint-mnd
   test:
-    name: Test library
+    name: Test
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        php_version: [7.1, 7.2, 7.3, 7.4]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+      - name: Pre-build validations
+        run: make lint
       - name: Build
-        run: make PHP_VERSION=${{ matrix.php_version }} rebuild
+        run: make build
       - name: Test
         run: make test

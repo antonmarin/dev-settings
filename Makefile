@@ -1,7 +1,15 @@
 .DEFAULT_GOAL=help
+GOOS=$(shell uname | tr '[:upper:]' '[:lower:]')
 PHP_VERSION=7.1
 DEV_IMAGE_NAME="antonmarin/php:$(PHP_VERSION)-alpine-cli"
 CMD_DOCKER_RUN=docker run -itv $(PWD):/app -w /app $(DEV_IMAGE_NAME)
+COLOR_NONE="\\033[0m"
+COLOR_BLUE="\\033[34m"
+COLOR_CYAN="\\033[36m"
+COLOR_GREEN="\\033[32m"
+COLOR_YELLOW="\\033[33m"
+COLOR_ORANGE="\\033[43m"
+COLOR_RED="\\033[31m"
 
 exec:
 	$(CMD_DOCKER_RUN) sh

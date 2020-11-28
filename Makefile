@@ -55,7 +55,7 @@ lint-helm:
 lint-json:
 	docker run --rm -v "$(PWD):/app" cytopia/jsonlint -t '    ' /app/composer.json
 lint-markdown:
-	docker run --rm -v $(PWD):/app markdownlint/markdownlint -i /app
+	docker run --rm -v "$(PWD):/app" -w /app markdownlint/markdownlint -i /app
 lint-mnd:
 	docker run --rm -v $(PWD):/app dockerizedphp/phpmnd /app \
         --exclude=var --exclude=vendor --exclude=src/Pcs/Resources/blockslib/blocks \

@@ -1,5 +1,23 @@
 # Contributing
 
+## Strategy
+
+Коротко: mvp; stable;
+
+### Risks
+
+- Плохо знаем бизнес-модель
+- Жесткий дэдлайн при фиксированном скоупе - Новый год
+
+### Principles
+
+Примеры:
+
+- Толстый контроллер + smoke test
+- TDD + nodesign
+- hexagon + split unit,integration tests
+- acceptance tests at <https://github.com/>...
+
 ## Getting started
 
 How to begin contributing?

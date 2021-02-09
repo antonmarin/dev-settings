@@ -69,12 +69,12 @@ lint-swagger:
 lint-yaml:
 	docker run --rm -v $(PWD):/app -w /app sdesbure/yamllint sh -c "yamllint /app/*.yml"
 
-test: stan codeception
+test: sat codeception
 rebuild:
 	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(DEV_IMAGE_NAME) -f docker/Dockerfile .
 	$(CMD_DOCKER_RUN) rm -f composer.lock
 	$(CMD_DOCKER_RUN) composer install
-stan:
+sat:
 	$(CMD_DOCKER_RUN) vendor/bin/phpstan analyse . -vvv
 codeception:
 	$(CMD_DOCKER_RUN) vendor/bin/codecept run

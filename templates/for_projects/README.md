@@ -12,24 +12,6 @@ Specification: <https://swagger.domain.com/serviceA.yml>, <https://confluence.do
 
 > Например: оформление заказа; сбор заказа; регистрация пользователя.
 
-## Стратегия развития проекта
-
-Коротко: mvp; stable;
-
-### Риски
-
-- Плохо знаем бизнес-модель
-- Жесткий дэдлайн при фиксированном скоупе - Новый год
-
-### Подходы
-
-Примеры:
-
-- Толстый контроллер + smoke test
-- TDD + nodesign
-- hexagon + split unit,integration tests
-- acceptance tests at <https://github.com/>...
-
 ## Ответственные
 
 - Тех: Сергей Сергеевич @serg

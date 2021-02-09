@@ -2,25 +2,25 @@
 
 ## Getting started
 
-Что сделать чтобы приступить к разработке?
+How to begin contributing?
 
 `docker-compose up -d`
 
 ## Documenting
 
-Какие есть не автоматизированные соглашения в написании документации?
+Are there any not automated documenting conventions?
 
 ### Specification
 
-- При изменении api или порождаемых событий обязательно обновить спеку
+- Update specification before editing HTTP or message API
 
 ### PhpDoc
 
-- Если метод возвращает array, то в phpdoc следует описать форму этого массива
+- Describe shape of arrays in form of used StaticAnalysisTool
 
 ## Code
 
-Какие есть не автоматизированные соглашения в написании кода?
+Are there any not automated code conventions?
 
 ### Backend
 
@@ -34,47 +34,48 @@
 
 ### Pull request
 
-Как интегрируем код?
+How to integrate?
 
-- После оформления PullRequest, аппруверы автоматически получают уведомление
-  о необходимости ревью
-- После получения аппрува автор PullRequest сливает его и выкатывает версию
-  сам или привлекая компетентных лиц
+- After creating PullRequest approvers receive notification and review
+- After approve successful PR author merge and deploy yourself or
+  requesting competent persons
 
 ## Tools
 
-Какие инструменты мы используем и для чего?
+What tools and utilities we use and what for?
 
-- Composer scripts to build application code. composer may require 4G and
-  docker 5+ G of RAM
-- docker-compose to deploy while dev
+- [Composer scripts](https://getcomposer.org/doc/articles/scripts.md) to
+  build application code. composer may require 4G and docker 5+ G of RAM
+- [docker-compose](https://docs.docker.com/compose/) to deploy while dev
 - Полезные команды:
   - `docker-compose exec php bash`
   - `task` [https://taskfile.dev](https://taskfile.dev)
 
-## Tests
+## Test
 
-Как проверить приложение на работоспособность?
+How to verify application is working properly?
+
+- `make test`
 
 ## Releasing
 
-Как выпустить релиз?
+What versioning schema used? How to package application with configs?
 
-- Как добавить переменные в пайплайн
+- We use [CalVer](https://calver.org/) ![CalVer](https://img.shields.io/badge/calver-YYYY.0M.MICRO-22bfda.svg)
+- Application package in docker images and distribute through [Docker Hub](https://hub.docker.com/search?type=image)
 
 ## Deploy
 
-Где находятся наши серверы и как доставить приложение на них?
+How to add secrets to pipeline? How to deploy application?
 
-We use GCP (Google cloud platform) and continuous deployment from master branch.
-
-To use first [install `gcloud` cli tool](https://cloud.google.com/sdk/install).
+- We use GCP (Google cloud platform) and continuous deployment from master branch.
+- To use first [install `gcloud` cli tool](https://cloud.google.com/sdk/install).
 
 ## Runtime
 
-Если у нас не golang то существует среда выполнения, как узнать что в ней есть?
+What servers run application?
 
-Visit `Dockerfile`s for info about running apps
+- Visit `Dockerfile`s for info about running apps
 
 or
 
@@ -84,12 +85,9 @@ or
 
 ## Monitoring
 
-Куда смотреть что все хорошо во время деплоя своих изменений?
+Where can you identify application failures? How to add monitoring of state index?
 
 - NewRelic
 - Sentry
 - ELK/Graylog
-
-Как оформлять данные для мониторинга(логи, метрики)?
-
 - We follow <https://prometheus.io/docs/practices/naming/>

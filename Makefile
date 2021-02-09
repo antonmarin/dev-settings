@@ -23,7 +23,7 @@ lint-composer:
 lint-cpd:
 	docker run --rm -v $(PWD):/app phpqa/phpcpd /app
 lint-cs:
-	docker run --rm -iv $(PWD):/data/ cytopia/php-cs-fixer fix --dry-run --diff --allow-risky=yes
+	docker run --rm -v $(PWD):/data/ -w /data/ oskarstark/php-cs-fixer-ga:2.18.2 --dry-run --diff --allow-risky=yes
 lint-checkstyle:
 	docker run --rm -v $(PWD):/app -v $HOME/checkstyle.xml:/config/checkstyle.xml solucionesgbh/checkstyle checkstyle /config/checkstyle.xml /app
 lint-dockerfile:

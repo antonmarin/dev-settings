@@ -49,3 +49,9 @@ curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/phpstan
 ```sh
 curl -sSo .github/workflows/onpush.yml https://raw.githubusercontent.com/antonmarin/dev-settings/master/github/workflows/onpush.yml
 ```
+
+## Composer require checker
+
+```sh
+curl -Lo bin/composer-require-checker.phar https://github.com/maglnet/ComposerRequireChecker/releases/download/3.0.0/composer-require-checker.phar && chmod +x bin/composer-require-checker.phar
+```

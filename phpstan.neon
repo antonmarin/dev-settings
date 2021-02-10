@@ -1,12 +1,16 @@
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - vendor/pepakriz/phpstan-exception-rules/extension.neon
 parameters:
     level: 6
-	tmpDir: var/cache/phpstan
-	paths:
+    tmpDir: var/cache/phpstan
+    paths:
         - app/
         - src/
         - tests/
     excludes_analyse:
         - tests/_support/_generated/
     inferPrivatePropertyTypeFromConstructor: true
-	bootstrapFiles:
+    bootstrapFiles:
         - vendor/codeception/codeception/autoload.php

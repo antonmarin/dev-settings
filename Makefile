@@ -74,6 +74,8 @@ rebuild:
 	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(DEV_IMAGE_NAME) -f docker/Dockerfile .
 	$(CMD_DOCKER_RUN) rm -f composer.lock
 	$(CMD_DOCKER_RUN) composer install
+symfony-container:
+	$(CMD_DOCKER_RUN) bin/console -n lint:container
 composer-require:
 	$(CMD_DOCKER_RUN) bin/composer-require-checker.phar check composer.json
 sat:

@@ -13,14 +13,15 @@ $finder = PhpCsFixer\Finder::create()
 return PhpCsFixer\Config::create()
     ->setFinder($finder)
     ->setRules([
-        '@PSR1' => true,
-        '@PSR2' => true,
+        '@PSR12' => true,
         '@PHP70Migration' => true,
         '@PHP71Migration' => true,
-        '@PhpCsFixer' => true,
+        '@PHP73Migration' => true,
+        '@PHP74Migration' => true,
 
         'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
         'phpdoc_align' => ['align' => 'left'],
+        'self_static_accessor' => true,
 
         // risky
         '@PHP70Migration:risky' => true,

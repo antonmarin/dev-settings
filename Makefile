@@ -38,6 +38,7 @@ lint-dockerfile:
         -v /usr/lib/systemd:/usr/lib/systemd \
         -v /etc:/etc --label docker_bench_security \
         docker/docker-bench-security
+	docker scan --accept-license -f /app/alpine/Dockerfile php:7.4-cli-alpine
 lint-doctrine:
 	bin/doctrine orm:validate-schema
 	bin/console doctrine:schema:validate

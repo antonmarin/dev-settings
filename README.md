@@ -50,6 +50,12 @@ curl -O https://raw.githubusercontent.com/antonmarin/dev-settings/master/phpstan
 curl -sSo .github/workflows/onpush.yml https://raw.githubusercontent.com/antonmarin/dev-settings/master/github/workflows/onpush.yml
 ```
 
+## Git utils
+
+```sh
+curl -sSo /usr/local/bin/git-churn https://raw.githubusercontent.com/antonmarin/dev-settings/master/bin/git-churn && chmod +x /usr/local/bin/git-churn
+```
+
 ## Composer require checker
 
 ```sh

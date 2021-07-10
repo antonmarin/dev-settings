@@ -4,6 +4,12 @@
 
 Коротко: mvp; stable;
 
+### SLO
+
+- MTTRepair: 4h
+- MTTRespond: 10m
+- [more common metrics](https://www.atlassian.com/incident-management/kpis/common-metrics)
+
 ### Risks
 
 - Плохо знаем бизнес-модель

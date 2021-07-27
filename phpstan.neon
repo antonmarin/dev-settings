@@ -10,6 +10,9 @@ parameters:
         - src/
         - tests/
     exceptions:
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true
         uncheckedExceptionClasses:
             - 'LogicException'
             - 'RuntimeException'

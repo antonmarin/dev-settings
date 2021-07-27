@@ -9,6 +9,10 @@ parameters:
         - app/
         - src/
         - tests/
+    exceptions:
+        uncheckedExceptionClasses:
+            - 'LogicException'
+            - 'RuntimeException'
     excludes_analyse:
         - tests/_support/_generated/
     inferPrivatePropertyTypeFromConstructor: true

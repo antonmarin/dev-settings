@@ -14,6 +14,10 @@ COLOR_RED="\\033[31m"
 exec:
 	$(CMD_DOCKER_RUN) sh
 
+input:
+    @read -p "Enter name: " NAME; \
+    echo $$NAME;
+
 lint: lint-cs lint-composer lint-mnd
 lint-cloud-init:
 	docker run --rm -v $(PWD):/app -w /app nonstatic/cloud-init:v1 cloud-init devel schema --config-file /app/cloud-init.cfg

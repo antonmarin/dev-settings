@@ -32,9 +32,7 @@ lint-checkstyle:
 	docker run --rm -v $(PWD):/app -v $HOME/checkstyle.xml:/config/checkstyle.xml solucionesgbh/checkstyle checkstyle /config/checkstyle.xml /app
 lint-dockerfile:
 	docker run --rm -tv ${PWD}:/app hadolint/hadolint:v1.8.0 \
-		hadolint \
-		/app/alpine/Dockerfile \
-		/app/debian/Dockerfile
+		sh -c "find . -name Dockerfile | xargs -L1 hadolint"
 	docker run --rm --net host --pid host --userns host --cap-add audit_control \
         -e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST \
         -v /var/lib:/var/lib \

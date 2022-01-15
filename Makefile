@@ -69,6 +69,7 @@ lint-shell:
 		build/docker/*/*.sh *.sh
 lint-swagger:
 	docker run --rm -v $(PWD):/app stoplight/spectral lint -F warn /app/swagger.yml
+    docker run --rm -v $(PWD):/app openapitools/openapi-generator-cli validate -i /app/src/main/resources/public/openapi.yaml
 lint-yaml:
 	docker run --rm -v $(PWD):/app -w /app sdesbure/yamllint sh -c "yamllint /app/*.yml"
 

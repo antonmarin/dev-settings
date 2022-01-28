@@ -73,18 +73,18 @@ lint-swagger:
 lint-yaml:
 	docker run --rm -v $(PWD):/app -w /app sdesbure/yamllint sh -c "yamllint /app/*.yml"
 
-test: sat codeception composer-require
 rebuild:
 	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(DEV_IMAGE_NAME) -f docker/Dockerfile .
 	$(CMD_DOCKER_RUN) rm -f composer.lock
 	$(CMD_DOCKER_RUN) composer install
-symfony-container:
+
+test: test-composer test-app
+test-symfony:
 	$(CMD_DOCKER_RUN) bin/console -n lint:container
-composer-require:
+test-composer:
 	$(CMD_DOCKER_RUN) bin/composer-require-checker.phar check composer.json
-sat:
+test-app:
 	$(CMD_DOCKER_RUN) vendor/bin/phpstan analyse . -vvv
-codeception:
 	$(CMD_DOCKER_RUN) vendor/bin/codecept run
 codeclimate:
 	docker run --rm -t \
@@ -93,7 +93,6 @@ codeclimate:
       --volume /var/run/docker.sock:/var/run/docker.sock \
       --volume /tmp/cc:/tmp/cc \
       codeclimate/codeclimate analyze
-
 phpmetrics:
 	docker run --rm -v $(PWD):/app --user $(id -u):$(id -g) herloct/phpmetrics /app
 

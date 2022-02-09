@@ -24,7 +24,7 @@ lint-cloud-init:
 	docker run --rm -v $(PWD):/app -w /app nonstatic/cloud-init:v1 cloud-init devel schema --config-file /app/cloud-init.cfg
 lint-composer:
 	docker run --rm -iv $(PWD):/app/ composer:1.9 validate
-    docker run --rm -v $(PWD):/app pplotka/local-php-security-checker-github-actions:v1.0.0
+    docker run --rm -v $(PWD)/composer.lock:/app/composer.lock pplotka/local-php-security-checker-github-actions:v1.0.0
 lint-cpd:
 	docker run --rm -v $(PWD):/app phpqa/phpcpd /app
 lint-cs:

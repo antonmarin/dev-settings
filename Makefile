@@ -2,7 +2,8 @@
 GOOS=$(shell uname | tr '[:upper:]' '[:lower:]')
 PHP_VERSION=7.1
 DEV_IMAGE_NAME="antonmarin/php:$(PHP_VERSION)-alpine-cli"
-CMD_DOCKER_RUN=docker run -itv $(PWD):/app -w /app $(DEV_IMAGE_NAME)
+MOUNTS?=-v $(PWD):/app
+CMD_DOCKER_RUN=docker run -it $(MOUNTS) -w /app $(DEV_IMAGE_NAME)
 COLOR_NONE="\\033[0m"
 COLOR_BLUE="\\033[34m"
 COLOR_CYAN="\\033[36m"
@@ -83,6 +84,7 @@ test-symfony:
 	$(CMD_DOCKER_RUN) bin/console -n lint:container
 test-composer:
 	$(CMD_DOCKER_RUN) bin/composer-require-checker.phar check composer.json
+test-app: MOUNTS+= -v "$(HOME)/.phpstan:/tmp/phpstan" # https://www.gnu.org/software/make/manual/html_node/Target_002dspecific.html https://phpstan.org/config-reference#caching
 test-app:
 	$(CMD_DOCKER_RUN) vendor/bin/phpstan analyse . -vvv
 	$(CMD_DOCKER_RUN) vendor/bin/codecept run

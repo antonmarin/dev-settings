@@ -1,9 +1,22 @@
+SHELL = /bin/sh
 .DEFAULT_GOAL=help
-GOOS=$(shell uname | tr '[:upper:]' '[:lower:]')
-PHP_VERSION=7.1
-DEV_IMAGE_NAME="antonmarin/php:$(PHP_VERSION)-alpine-cli"
-MOUNTS?=-v $(PWD):/app
-CMD_DOCKER_RUN=docker run -it $(MOUNTS) -w /app $(DEV_IMAGE_NAME)
+GOOS=$(shell uname -s | tr '[:upper:]' '[:lower:]')
+.PHONY: help
+help: #? help me
+	@printf "\e[34;01mAvailable targets\033[0m\n"
+	@awk '/^@?[a-zA-Z\-_0-9]+:/ { \
+		nb = sub( /^#\? /, "", helpMsg ); \
+		if(nb == 0) { \
+			helpMsg = $$0; \
+			nb = sub( /^[^:]*:.* #\? /, "", helpMsg ); \
+		} \
+		if (nb) \
+			printf "\033[1;31m%-" width "s\033[0m %s\n", $$1, helpMsg; \
+	} \
+	{ helpMsg = $$0 }' \
+	$(MAKEFILE_LIST) | column -ts:
+
+# decorations
 COLOR_NONE="\\033[0m"
 COLOR_BLUE="\\033[34m"
 COLOR_CYAN="\\033[36m"
@@ -11,6 +24,12 @@ COLOR_GREEN="\\033[32m"
 COLOR_YELLOW="\\033[33m"
 COLOR_ORANGE="\\033[43m"
 COLOR_RED="\\033[31m"
+
+# execute helpers
+PHP_VERSION=7.1
+IMAGE_TAG?="antonmarin/php:$(PHP_VERSION)-alpine-cli"
+MOUNTS?=-v $(PWD):/app
+CMD_DOCKER_RUN=docker run -it $(MOUNTS) -w /app $(IMAGE_TAG)
 
 exec:
 	$(CMD_DOCKER_RUN) sh
@@ -75,7 +94,7 @@ lint-yaml:
 	docker run --rm -v $(PWD):/app -w /app sdesbure/yamllint sh -c "yamllint /app/*.yml"
 
 rebuild:
-	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(DEV_IMAGE_NAME) -f docker/Dockerfile .
+	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(IMAGE_TAG) -f docker/Dockerfile .
 	$(CMD_DOCKER_RUN) rm -f composer.lock
 	$(CMD_DOCKER_RUN) composer install
 
@@ -97,24 +116,3 @@ codeclimate:
       codeclimate/codeclimate analyze
 phpmetrics:
 	docker run --rm -v $(PWD):/app --user $(id -u):$(id -g) herloct/phpmetrics /app
-
-help: #? help me
-	@printf "\e[34;01mAvailable targets\033[0m\n"
-	@awk '/^@?[a-zA-Z\-_0-9]+:/ { \
-		nb = sub( /^#\? /, "", helpMsg ); \
-		if(nb == 0) { \
-			helpMsg = $$0; \
-			nb = sub( /^[^:]*:.* #\? /, "", helpMsg ); \
-		} \
-		if (nb) \
-			printf "\033[1;31m%-" width "s\033[0m %s\n", $$1, helpMsg; \
-	} \
-	{ helpMsg = $$0 }' \
-	$(MAKEFILE_LIST) | column -ts:
-
-manualhelp:
-	@printf "\
-		exec\t connect to shell of current dev image \n\
-		lint\t prebuild validations \n\
-		test\t test library \n\
-	"

@@ -12,16 +12,16 @@ Specification: <https://swagger.domain.com/serviceA.yml>, <https://confluence.do
 
 > Например: оформление заказа; сбор заказа; регистрация пользователя.
 
-## Ответственные
-
-- Тех: Сергей Сергеевич @serg
-- Продукт: Иван Иванович @ivan
-
 ## Каналы коммуникации
 
 - `#tech`. Тех ревью. Помощь в проектировании.
 - jira.domain.com/BUGS. Несовершенства системы.
 - status.domain.com. Работоспособность узлов
+
+## Как использовать
+
+- `docker compose up -d`
+- `open http:\\localhost:8080`
 
 ## Стейджинг
 

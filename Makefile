@@ -26,6 +26,7 @@ COLOR_ORANGE="\\033[43m"
 COLOR_RED="\\033[31m"
 
 # execute helpers
+include .env
 PHP_VERSION=7.1
 IMAGE_TAG?="antonmarin/php:$(PHP_VERSION)-alpine-cli"
 MOUNTS?=-v $(PWD):/app

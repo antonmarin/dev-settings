@@ -4,6 +4,8 @@ jobs:
   integration-pipeline:
     name: Integration pipeline
     runs-on: ubuntu-latest
+    on:
+      push
     steps:
       - name: Checkout
         uses: actions/checkout@v3

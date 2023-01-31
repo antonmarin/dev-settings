@@ -4,7 +4,7 @@ jobs:
   integration-pipeline:
     name: Integration pipeline
     runs-on: ubuntu-latest
-    on:
+    on: # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push
       push
     steps:
       - name: Checkout

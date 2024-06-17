@@ -5,6 +5,7 @@ import com.intellij.database.util.Case
 import com.intellij.database.util.DasUtil
 
 /*
+ * Api at https://www.jetbrains.com/help/datagrip/data-extractors.html#api_for_custom_data_extractors
  * Available context bindings:
  *   SELECTION   Iterable<DasObject>
  *   PROJECT     project

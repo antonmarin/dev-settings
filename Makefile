@@ -117,3 +117,6 @@ codeclimate:
       codeclimate/codeclimate analyze
 phpmetrics:
 	docker run --rm -v $(PWD):/app --user $(id -u):$(id -g) herloct/phpmetrics /app
+
+why:
+	../gradlew dependencyInsight --configuration testCompileClasspath --dependency org.springframework.boot:spring-boot-test-autoconfigure:2.7.10

@@ -54,14 +54,6 @@ lint-checkstyle:
 lint-dockerfile:
 	docker run --rm -tv $(PWD):/app hadolint/hadolint:latest-debian \
 		sh -c "find . -name Dockerfile | xargs -L1 hadolint"
-	docker run --rm --net host --pid host --userns host --cap-add audit_control \
-        -e DOCKER_CONTENT_TRUST=$DOCKER_CONTENT_TRUST \
-        -v /var/lib:/var/lib \
-        -v /var/run/docker.sock:/var/run/docker.sock \
-        -v /usr/lib/systemd:/usr/lib/systemd \
-        -v /etc:/etc --label docker_bench_security \
-        docker/docker-bench-security
-	docker scan --accept-license -f $(PWD)/src/5.6/alpine/cli/Dockerfile antonmarin/php:5.6-alpine-cli
 lint-doctrine:
 	bin/doctrine orm:validate-schema
 	bin/console doctrine:schema:validate
@@ -96,6 +88,7 @@ lint-yaml:
 
 rebuild:
 	docker build --build-arg PHP_VERSION=$(PHP_VERSION) -t $(IMAGE_TAG) -f docker/Dockerfile .
+	docker scout recommendations $(IMAGE_TAG)
 	$(CMD_DOCKER_RUN) rm -f composer.lock
 	$(CMD_DOCKER_RUN) composer install
 

@@ -111,5 +111,11 @@ codeclimate:
 phpmetrics:
 	docker run --rm -v $(PWD):/app --user $(id -u):$(id -g) herloct/phpmetrics /app
 
+PUBLIC_IMAGE_TAG="$(DOCKER_REPO_HOST)/$(IMAGE_TAG)"
+publish:
+	@echo $(DOCKER_REPO_PASS) | docker login -u $(DOCKER_REPO_LOGIN) --password-stdin $(DOCKER_REPO_HOST)
+	docker image tag $(IMAGE_TAG) $(PUBLIC_IMAGE_TAG)
+	docker push $(PUBLIC_IMAGE_TAG)
+
 why:
 	../gradlew dependencyInsight --configuration testCompileClasspath --dependency org.springframework.boot:spring-boot-test-autoconfigure:2.7.10
